@@ -148,7 +148,7 @@ const Home = () => {
       <div className="page home">
         <section className="hero">
           <div className="hero-img">
-            <video src="/home/hero.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <video src="https://res.cloudinary.com/dkwgl0ek8/video/upload/v1754597325/hero_wcidrh.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
 
           <div className="hero-header">
@@ -196,7 +196,7 @@ const Home = () => {
           <h2 className="primary">Introduction</h2>
           <div className="home-intro-content">
             <div className="home-intro-video-wrapper">
-              <video src="/about/introduction.mp4" controls poster="/about/about-hero.jpg" style={{ width: '100%', borderRadius: '1em', border: '1px dashed var(--fg)' }} />
+              <video src="https://res.cloudinary.com/dkwgl0ek8/video/upload/v1754597309/introduction_wkcf84.mp4" controls poster="/about/about-hero.jpg" style={{ width: '100%', borderRadius: '1em', border: '1px dashed var(--fg)' }} />
             </div>
             <div className="home-intro-text">
               <p>I'm Prajwal N — an aspiring actor passionate about storytelling and the performing arts. Every project is a new collaboration, a new challenge, and a new chance to create something meaningful.</p>
