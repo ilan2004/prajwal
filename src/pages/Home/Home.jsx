@@ -1,11 +1,8 @@
 import workList from "../../data/workList";
 import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 import "./Home.css";
 
 import AnimatedCopy from "../../components/AnimatedCopy/AnimatedCopy";
-import Reviews from "../../components/Reviews/Reviews";
-import ContactForm from "../../components/ContactForm/ContactForm";
 import Footer from "../../components/Footer/Footer";
 
 import gsap from "gsap";
@@ -16,7 +13,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 import Transition from "../../components/Transition/Transition";
 
+import { useState } from "react";
+
 const Home = () => {
+  const [fullscreenPhoto, setFullscreenPhoto] = useState(null);
+
+  // Close modal on ESC
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") setFullscreenPhoto(null);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   const workItems = Array.isArray(workList) ? workList : [];
   const stickyTitlesRef = useRef(null);
   const titlesRef = useRef([]);
@@ -138,93 +148,93 @@ const Home = () => {
       <div className="page home">
         <section className="hero">
           <div className="hero-img">
-            <img src="/home/hero.jpg" alt="" />
+            <video src="/home/hero.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
 
           <div className="hero-header">
             <AnimatedCopy tag="h1" animateOnScroll={false} delay={0.7}>
-              Nico
+              Prajwal
             </AnimatedCopy>
             <AnimatedCopy tag="h1" animateOnScroll={false} delay={0.8}>
-              Palmer
+              N
             </AnimatedCopy>
+          </div>
+
+        </section>
+
+        {/* About Info Section */}
+        <section className="about-info-box">
+          <div className="about-info-line"><strong>Name:</strong> Prajwal N</div>
+          <div className="about-info-line"><strong>Height:</strong> 5'9 feet</div>
+          <div className="about-info-line"><strong>Weight:</strong> 72 kg</div>
+          <div className="about-info-line"><strong>Sex:</strong> Male</div>
+          <div className="about-info-line"><strong>Location:</strong> Bengaluru</div>
+          <div className="about-info-line"><strong>Contact:</strong> 8431105425</div>
+        </section>
+
+        {/* Photos Section */}
+        <section className="home-photos">
+          <h2 className="primary">Photos</h2>
+          <div className="home-photos-gallery">
+            <img src="/about/button.jpg" alt="Button" onClick={() => setFullscreenPhoto('/about/button.jpg')} />
+            <img src="/about/car.jpg" alt="Car" onClick={() => setFullscreenPhoto('/about/car.jpg')} />
+            <img src="/about/good.jpg" alt="Good" onClick={() => setFullscreenPhoto('/about/good.jpg')} />
+            <img src="/about/look.jpg" alt="Look" onClick={() => setFullscreenPhoto('/about/look.jpg')} />
+            <img src="/about/ethnic.jpg" alt="Ethnic" onClick={() => setFullscreenPhoto('/about/ethnic.jpg')} />
+          </div>
+          {/* Fullscreen Photo Modal */}
+          {fullscreenPhoto && (
+            <div className="photo-modal" onClick={() => setFullscreenPhoto(null)}>
+              <img src={fullscreenPhoto} alt="Fullscreen" className="photo-modal-img" onClick={e => e.stopPropagation()} />
+              <button className="photo-modal-close" onClick={() => setFullscreenPhoto(null)}>&times;</button>
+            </div>
+          )}
+        </section>
+
+        {/* Introduction Section */}
+        <section className="home-intro">
+          <h2 className="primary">Introduction</h2>
+          <div className="home-intro-content">
+            <div className="home-intro-video-wrapper">
+              <video src="/about/introduction.mp4" controls poster="/about/about-hero.jpg" style={{ width: '100%', borderRadius: '1em', border: '1px dashed var(--fg)' }} />
+            </div>
+            <div className="home-intro-text">
+              <p>I'm Prajwal N — an aspiring actor passionate about storytelling and the performing arts. Every project is a new collaboration, a new challenge, and a new chance to create something meaningful.</p>
+            </div>
           </div>
         </section>
 
-        <section ref={stickyTitlesRef} className="sticky-titles">
-          <div className="sticky-titles-nav">
-            <p className="primary sm">About Me</p>
-            <p className="primary sm">Let’s Connect</p>
+        {/* Work Experience Section */}
+        <section className="home-experience">
+          <h2 className="primary">Work Experience</h2>
+
+          {/* Work 1 */}
+          <div className="work-detail">
+            <h3>Work 1: Kaad Rekhai</h3>
+            <img src="/about/work 1.jpg" alt="Work 1 - Kaad Rekhai" className="work-img" />
+            <ul className="work-points">
+              <li>I played the lead role in a tribal play titled <strong>Kaad Rekhai</strong>, which centers around the issue of tribal communities denying their children access to education.</li>
+              <li>Performed in <strong>three shows</strong> of Kaad Rekhai.</li>
+              <li>Portray a powerful character named <strong>Sadashivaraya</strong> in the historical play <strong>Rakshasa Tangadi</strong>.</li>
+              <li>Experience in production and a basic understanding of stage lighting.</li>
+              <li>Actively involved in street theatre, performing as <strong>Major Prakash</strong> in a street play that has completed <strong>ten shows</strong>.</li>
+            </ul>
           </div>
-          <div className="sticky-titles-footer">
-            <p className="primary sm">Storytelling Through Film</p>
-            <p className="primary sm">Open to Collaborations</p>
+
+          {/* Work 2 */}
+          <div className="work-detail">
+            <h3>Work 2: Rakshasa Tangadi</h3>
+            <img src="/about/work 2.jpg" alt="Work 2 - Rakshasa Tangadi" className="work-img" />
+            <ul className="work-points">
+              <li><strong>Rakshasa Tangadi</strong> is a large-scale historical play written by Girish Karnad and directed by Gagan Prasad.</li>
+              <li>I have the privilege of playing the role of <strong>Sadashivaraya</strong> in this magnum opus.</li>
+              <li>Being part of this production has given me the opportunity to deeply explore the rich history of Hampi and gain a profound understanding of each character in the play.</li>
+              <li>It has been a valuable learning experience as an actor.</li>
+            </ul>
           </div>
-          <h2 ref={(el) => (titlesRef.current[0] = el)}>
-            I craft films that tell human stories with cinematic depth.
-          </h2>
-          <h2 ref={(el) => (titlesRef.current[1] = el)}>
-            Each project is driven by emotion, clarity, and vision.
-          </h2>
-          <h2 ref={(el) => (titlesRef.current[2] = el)}>
-            This portfolio is a glimpse into the frames that move me.
-          </h2>
+
         </section>
 
-        <section ref={stickyWorkHeaderRef} className="sticky-work-header">
-          <AnimatedCopy tag="h1" animateOnScroll="true">
-            Palmer selects
-          </AnimatedCopy>
-        </section>
-
-        <section ref={homeWorkRef} className="home-work">
-          <div className="home-work-list">
-            {workItems.map((work, index) => (
-              <Link
-                to="/sample-project"
-                key={work.id}
-                className="home-work-item"
-              >
-                <p className="primary sm">{`${String(index + 1).padStart(
-                  2,
-                  "0"
-                )} - ${String(workItems.length).padStart(2, "0")}`}</p>
-                <h3>{work.title}</h3>
-                <div className="work-item-img">
-                  <img src={work.image} alt={work.title} />
-                </div>
-                <h4>{work.category}</h4>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <Reviews />
-
-        <section className="hobbies">
-          <div className="hobby">
-            <AnimatedCopy tag="h4" animateOnScroll={true}>
-              Camera
-            </AnimatedCopy>
-          </div>
-          <div className="hobby">
-            <AnimatedCopy tag="h4" animateOnScroll={true}>
-              Editing
-            </AnimatedCopy>
-          </div>
-          <div className="hobby">
-            <AnimatedCopy tag="h4" animateOnScroll={true}>
-              Story
-            </AnimatedCopy>
-          </div>
-          <div className="hobby">
-            <AnimatedCopy tag="h4" animateOnScroll={true}>
-              Sound
-            </AnimatedCopy>
-          </div>
-        </section>
-
-        <ContactForm />
         <Footer />
       </div>
     </ReactLenis>

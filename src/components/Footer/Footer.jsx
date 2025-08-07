@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="footer-contact">
           <h3>
             Let’s Collaborate <br />
-            film<span>@</span>nicopalmer.com
+            film<span>@</span>prajwaln.com
           </h3>
 
           <p className="secondary">
@@ -18,12 +18,18 @@ const Footer = () => {
             collaborations. Feel free to reach out anytime.
           </p>
 
-          <Link to="/contact" className="btn">
+          <a
+            href="https://wa.me/918310294230"
+            className="btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat on WhatsApp"
+          >
             Get in Touch
-          </Link>
+          </a>
         </div>
 
-        <div className="footer-nav">
+        {/* <div className="footer-nav">
           <Link to="/" className="footer-nav-item">
             <span>Home</span>
             <span>&#8594;</span>
@@ -48,17 +54,16 @@ const Footer = () => {
             <span>FAQ</span>
             <span>&#8594;</span>
           </Link>
-        </div>
+        </div> */}
       </div>
       <div className="footer-row">
         <div className="footer-header">
-          <h1>Nico</h1>
-          <h1>Palmer</h1>
+          <h1>Prajwal N</h1>
         </div>
 
         <div className="footer-copyright-line">
-          <p className="primary sm">&copy; Nico Palmer 2025</p>
-          <p className="primary sm">Website Template by Codegrid</p>
+          <p className="primary sm">&copy; Prajwal N2025</p>
+          <p className="primary sm">Made by <a href="https://starshape.in" target="_blank" rel="noopener noreferrer">starshape.in</a></p>
         </div>
       </div>
     </div>

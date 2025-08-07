@@ -7,10 +7,6 @@ import { gsap } from "gsap";
 const Menu = () => {
   const menuLinks = [
     { path: "/", label: "Home" },
-    { path: "/work", label: "Work" },
-    { path: "/about", label: "About" },
-    { path: "/contact", label: "Contact" },
-    { path: "/faq", label: "FAQ" },
   ];
 
   const location = useLocation();
@@ -185,7 +181,7 @@ const Menu = () => {
         <div className="menu-bar-container">
           <div className="menu-logo" onClick={closeMenu}>
             <Link to="/">
-              <h4>Palmer</h4>
+              <h4>Prajwal N</h4>
             </Link>
           </div>
           <div className="menu-actions">

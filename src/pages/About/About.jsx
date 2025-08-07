@@ -27,7 +27,7 @@ const About = () => {
         <section className="about-me-copy">
           <div className="about-me-copy-wrapper">
             <AnimatedCopy animateOnScroll={true} tag="h3">
-              I'm Nico Palmer — a filmmaker drawn to human stories, quiet
+              I'm Prajwal N — an aspiring actor passionate about storytelling and the performing arts.
               moments, and the visual language of emotion. My work spans short
               films, experimental pieces, and cinematic visuals.
             </AnimatedCopy>
